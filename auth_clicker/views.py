@@ -6,6 +6,7 @@ from rest_framework import generics
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .forms import UserForm
+from backend.models import Core
 
 
 
@@ -23,7 +24,8 @@ class UserDetail(generics.RetrieveAPIView):
 def index(request):
   user = User.objects.filter(id=request.user.id)
   if len(user) != 0:
-    return render(request, 'index.html')
+    core = Core.objects.get(user=request.user)
+    return render(request, 'index.html', {'core': core})
   else:
     return redirect('login')
   
@@ -96,6 +98,8 @@ class Register(APIView):
               user.save
               user = authenticate(request, username=username, password=password)
               login(request, user)
+              core = Core(user=user)
+              core.save()
               return redirect('index')
             else:
               return render(request, 'registration.html', {'invalid':True, 'form':form})
