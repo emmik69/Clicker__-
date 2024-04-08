@@ -6,7 +6,7 @@ from rest_framework import generics
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .forms import UserForm
-from backend.models import Core
+from backend.models import Core, Boost
 
 
 
@@ -25,9 +25,18 @@ def index(request):
   user = User.objects.filter(id=request.user.id)
   if len(user) != 0:
     core = Core.objects.get(user=request.user)
-    return render(request, 'index.html', {'core': core})
+    boosts = Boost.objects.filter(core=core)
+    return render(request, 'index.html', {'core': core, 'boosts': boosts})
   else:
     return redirect('login')
+
+
+# def index(request):
+#   coreModel = Core.get_model('backend', 'Core')
+#   boostsModel = Boost.get_model('backend', 'Boost')
+#   core = coreModel.objects.get(user=request.user)
+#   boosts = boostsModel.objects.filter(core=core)
+#   return render(request, 'index.html', {'core': core, 'boosts': boosts})
   
 
 class UserLogin(APIView):
