@@ -26,6 +26,7 @@ def index(request):
   if len(user) != 0:
     core = Core.objects.get(user=request.user)
     boosts = Boost.objects.filter(core=core)
+    print(boosts)
     return render(request, 'index.html', {'core': core, 'boosts': boosts})
   else:
     return redirect('login')
