@@ -22,17 +22,19 @@
 
       <div class="container">
         <div id='coins'>{{core.coins}}</div>
-        <button onclick="call_click()">Нажми меня</button>
+        {% comment %} <button id='mainBTN' onclick="call_click()">Нажми меня</button> {% endcomment %}
+        <img class='mainBTN' id='mainBTN' onclick="call_click()" src='../static/kakashi.png'/>
         <p>
           Невероятная мощь клика: <span id="click_power">{{ core.click_power }}</span>
         </p>
+        <p>Самостоятельная дружина кликеров. Чел: <span id="auto_click_power">{{ core.auto_click_power }}</span></p>
       </div>
 
       <aside class="boosts" id="boosts">
         <h3>Бусты</h3>
         <div class="boosts-holder" id="boosts">
           {% for boost in boosts %}
-            <button class="boost" id="boost_{{boost.id}}" onclick="buy_boost({{boost.id}})">
+            <button class="boost_{{boost.type}}" id="boost_{{boost.id}}" onclick="buy_boost({{boost.id}})">
               <p>lvl: <span id="boost_level">{{boost.lvl}}</span></p>
               <p>+<span id="boost_power">{{boost.power}}</span></p>
               <p><span id="boost_price">{{boost.price}}</span></p>
