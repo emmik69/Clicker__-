@@ -2,46 +2,54 @@
 <!DOCTYPE html>
 <html lang="ru" dir="ltr">
   <head>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <script type="text/javascript" src="{% static "js/index.js" %}"></script>
     <meta charset="utf-8" />
     <title>Лучший кликер на планете</title>
   </head>
   <body>
-    <mian class="app"> 
-      <nav class="nav">
-        Привет, {{ user.username }}
-        <a href="{% url "logout" %}">Выйти</a>
-      </nav>
+    <mian class="app">
+      <header class="header">
+        <nav class="nav">
+          <p>Привет, {{ user.username }} (^˵◕ω◕˵^)</p>
+          <a class="reset-link" href="{% url "logout" %}">Выйти</a>
+        </nav>
+      </header>
 
-      <div class="container">
-        <div id='coins'>{{core.coins}}</div>
-        {% comment %} <button id='mainBTN' onclick="call_click()">Нажми меня</button> {% endcomment %}
-        <img class='mainBTN' id='mainBTN' onclick="call_click()" src='../static/kakashi.png'/>
-        <p>
-          Невероятная мощь клика: <span id="click_power">{{ core.click_power }}</span>
-        </p>
-        <p>Самостоятельная дружина кликеров. Чел: <span id="auto_click_power">{{ core.auto_click_power }}</span></p>
-      </div>
-
-      <aside class="boosts" id="boosts">
-        <h3>Бусты</h3>
-        <div class="boosts-holder" id="boosts">
-          {% for boost in boosts %}
-            <button class="boost_{{boost.type}}" id="boost_{{boost.id}}" onclick="buy_boost({{boost.id}})">
-              <p>lvl: <span id="boost_level">{{boost.lvl}}</span></p>
-              <p>+<span id="boost_power">{{boost.power}}</span></p>
-              <p><span id="boost_price">{{boost.price}}</span></p>
-            </button>
-          {% endfor %}
+      <div class="main-container">
+        <div class="container">
+          <p>
+            Невероятная мощь клика: <span id="click_power">{{ core.click_power }}</span>
+          </p>
+          <p>Самостоятельная дружина кликеров. Чел: <span id="auto_click_power">{{ core.auto_click_power }}</span></p>
+          <div class="coins" id='coins'>{{core.coins}}</div>
         </div>
-      </aside>
+
+        <img class='mainBTN' id='mainBTN' onclick="call_click()" src='../static/kakashi.png'/>
+        <audio id="clickSound" src="../static/zvuk.mp3"></audio>
+
+        <aside class="boosts" id="boosts">
+          <h3>Бусты</h3>
+          <div class="boosts-holder" id="boosts">
+            {% for boost in boosts %}
+              <button class="boost_{{boost.type}}" id="boost_{{boost.id}}" onclick="buy_boost({{boost.id}})">
+                <p>lvl: <span id="boost_level">{{boost.lvl}}</span></p>
+                <p>+<span id="boost_power">{{boost.power}}</span></p>
+                <p><span id="boost_price">{{boost.price}}</span></p>
+              </button>
+            {% endfor %}
+          </div>
+        </aside>
+      </div>
     </main>
   </body>
 </html>

@@ -1,7 +1,104 @@
-header {
-  background-color: darkcyan;
-  color: white;
-  height: 100px;
+.montserrat-Light {
+  font-family: 'Montserrat', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+.montserrat-Regular {
+  font-family: 'Montserrat', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+.montserrat-Medium {
+  font-family: 'Montserrat', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+.montserrat-SemiBold {
+  font-family: 'Montserrat', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+.reset-link {
+  text-decoration: none;
+  color: #ff2b2b;
+
+  &:hover {
+    text-decoration: none;
+    color: #b21212;
+  }
+}
+
+body {
+  font-family: 'Montserrat';
+  font-weight: 500;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 9px;
+  align-items: center;
+  border-bottom: 2px solid #c9c9c9;
+}
+
+.main-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 50px 65px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+  padding: 0;
+  width: 500px;
+  background-color: #494f65;
+  color: #e8e8e8;
+  border-radius: 10px 10px 30px 30px;
+}
+
+.coins {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 350px;
+  border-radius: 30px;
+  border-top: 2px solid #f9e8cb;
+  border-bottom: 2px solid #d3c0a2;
+  font-weight: 600;
+  font-size: 50px;
+}
+
+.boosts {
+  width: 528px;
+}
+
+.header {
+  padding: 0 65px;
 }
 
 h3 {
@@ -31,10 +128,41 @@ main {
   text-decoration: none;
 }
 
+.boosts-holder {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.boost_0 {
+  border-radius: 10px;
+  border: 2px solid #d3c0a2;
+  height: 75px;
+  width: 100px;
+  padding: 5px;
+  font-weight: 300;
+  font-size: 14px;
+}
+
 .boost_1 {
-  border: 2px solid red;
+  border-radius: 10px;
+  border: 2px solid #924444;
+  height: 75px;
+  width: 100px;
+  padding: 5px;
+  background-color: rgb(230, 230, 230);
+  font-weight: 300;
+  font-size: 14px;
+}
+
+#boost_price {
+  font-weight: 400;
+  font-size: 12px;
 }
 
 .mainBTN {
   width: 300px;
+  cursor: pointer;
 }

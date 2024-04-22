@@ -40,6 +40,10 @@ let Game = new GameSession();
 function call_click() {
   const kakashiNode = document.getElementById('mainBTN');
   click_animation(kakashiNode, 50);
+  const audio = document.getElementById('clickSound');
+  audio.pause();
+  audio.currentTime = 0;
+  audio.play();
   Game.add_coins(Game.click_power);
 }
 
